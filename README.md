@@ -1,2 +1,4 @@
-1. warm up after sleep // day_3
-2. day 4
+1. warm up after sleep //day 4
+   1.https://github.com/IBlitz2/JS/blob/main/Cart%20Quantity  //Добавление товара в корзину
+   2.
+
