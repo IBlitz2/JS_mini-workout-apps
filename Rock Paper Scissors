@@ -3,42 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>RockScissorsPaper</title>
   </head>
   <body>
+<h1>Функции</h1>
+<p>Вызов функции, повторное использования кода и устранения дублирования</p>
+
     <button onclick="
-
-    const randomNumber = Math.random();
-
-    let computerMove = '';
-
-    if (randomNumber >= 0 && randomNumber < 1 / 3) {
-        computerMove = 'rock'
-    } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
-        computerMove = 'paper';
-    } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
-        computerMove = 'scissors';
-}
-
-console.log(computerMove);
-
-let result ='';
-
-    if (computerMove === 'rock') {
-        result = 'Tie.';
-    } else if (computerMove === 'paper') {
-        result = 'You lose.';
-    } else if (computerMove === 'scissors') {
-        result = 'You win.';
-    }
-        
-        alert(`You picked rock. Computer picked ${computerMove}. ${result}`);
+        playGame('rock');
     ">Rock</button>
 
     <button onclick="
-            const randomNumber = Math.random();
+        playGame('paper');
+    ">Paper</button>
+        
+    <button onclick="
+        playGame('scissors');
+    ">Scissors</button>
 
-    let computerMove = '';
+    <script>
+        function playGame(playerMove) {
+            const computerMove = pickComputerMove();
+   
+    let result ='';
+
+    if (playerMove === 'scissors') {
+        if (computerMove === 'rock') {
+        result = 'You lose.';
+        } else if (computerMove === 'paper') {
+        result = 'You win.';
+        } else if (computerMove === 'scissors') {
+        result = 'Tie.';
+        }
+
+    } else if (playerMove === 'paper') {
+        if (computerMove === 'rock') {
+        result = 'You win.';
+        } else if (computerMove === 'paper') {
+        result = 'Tie.';
+        } else if (computerMove === 'scissors') {
+        result = 'You lose.';
+        }
+
+    } else if (playerMove === 'rock') {
+        if (computerMove === 'rock') {
+        result = 'Tie.';
+        } else if (computerMove === 'paper') {
+        result = 'You lose.';
+        } else if (computerMove === 'scissors') {
+        result = 'You win.';
+        }
+    }
+    
+    
+    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}`);
+        }
+
+    function pickComputerMove() {                       //функцию мы поместили в script, загрузка сразу из этого тега
+        const randomNumber = Math.random();
+
+        let computerMove = '';  //Находится в облатсти видимости только этой функции и она не конфиликтует с переменными которые находятсая выше
 
     if (randomNumber >= 0 && randomNumber < 1 / 3) {
         computerMove = 'rock'
@@ -48,48 +72,9 @@ let result ='';
         computerMove = 'scissors';
     }
 
-    console.log(computerMove);
-
-    let result ='';
-
-    if (computerMove === 'rock') {
-        result = 'You win.';
-    } else if (computerMove === 'paper') {
-        result = 'Tie.';
-    } else if (computerMove === 'scissors') {
-        result = 'You lose.';
-    }
-        
-        alert(`You picked papper. Computer picked ${computerMove}. ${result}`);
-    ">Paper</button>
-    <button onclick="
-                const randomNumber = Math.random();
-
-let computerMove = '';
-
-if (randomNumber >= 0 && randomNumber < 1 / 3) {
-    computerMove = 'rock'
-} else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
-    computerMove = 'paper';
-} else if (randomNumber >= 2 / 3 && randomNumber < 1) {
-    computerMove = 'scissors';
-}
-
-console.log(computerMove);
-
-let result ='';
-
-if (computerMove === 'rock') {
-    result = 'You lose.';
-} else if (computerMove === 'paper') {
-    result = 'You win.';
-} else if (computerMove === 'scissors') {
-    result = 'Tie.';
-}
-    
-    alert(`You picked papper. Computer picked ${computerMove}. ${result}`);
-    ">Scissors</button>
-
-    <script></script>
+        return computerMove; //оператор возврата, теперь бутет везде при вызове этой функции возвращает указонное в нем.
+        }
+    </script>
   </body>
 </html>
+
